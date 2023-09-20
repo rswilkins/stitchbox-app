@@ -5,6 +5,7 @@
 import { React, useState } from "react"
 import { CurrentUserData } from "./CurrentConnectionData"
 import * as braze from '@braze/web-sdk'
+import { Form, Button } from "react-bootstrap"
 
 export default function UpdateBrazeUser() {
     // state variable controlling editability of all input fields
@@ -44,12 +45,15 @@ export default function UpdateBrazeUser() {
     // returns different inputs & buttons based on edit state of the component
     return (
         <>
-        <label htmlFor="externalId">External Id</label>
-        {edit && ( <input id="externalId" value={externalId} onChange={(e) => setExternalId(e.target.value)} required></input>)}
-        {!edit && ( <input disabled placeholder={externalId}></input>)}
-        {!edit && ( <button onClick={() => setEdit(!edit)}>Change Connection</button>)}
-        {edit && ( <button onClick={submitData}>Save Connection</button>)}
-        {edit && ( <button onClick={cancelChange}>Cancel</button>)}
+        <h4>Braze User Setup</h4>
+        <Form.Label htmlFor="externalId">External Id</Form.Label>
+        {edit && ( <Form.Control id="externalId" value={externalId} onChange={(e) => setExternalId(e.target.value)} required></Form.Control>)}
+        {/* {edit && ( <input id="externalId" value={externalId} onChange={(e) => setExternalId(e.target.value)} required></input>)} */}
+        {!edit && ( <Form.Control disabled placeholder={externalId}></Form.Control>)}
+        {/* {!edit && ( <input disabled placeholder={externalId}></input>)} */}
+        {!edit && ( <Button variant="secondary" className="mt-3" onClick={() => setEdit(!edit)}>Change User</Button>)}
+        {edit && ( <Button variant="primary" className="mt-3" onClick={submitData}>Save User</Button>)}
+        {edit && ( <Button variant="outline-danger" className="mt-3" onClick={cancelChange}>Cancel</Button>)}
         </>
     )
 }

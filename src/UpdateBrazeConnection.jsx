@@ -3,6 +3,7 @@
 // saving new connection data at any time will rerender the App
 import { React, useState } from "react"
 import { CurrentConnectionData } from "./CurrentConnectionData"
+import { Form, Button } from "react-bootstrap"
 
 export default function UpdateBrazeConnection() {
     // state variable controlling editability of all input fields
@@ -58,18 +59,25 @@ export default function UpdateBrazeConnection() {
     // returns different inputs & buttons based on edit state of the component
     return (
         <>
-        <label>Web App API Key</label>
-        {edit && ( <input id="webApp" value={webKey} onChange={(e) => setWebKey(e.target.value)} required></input>)}
-        {!edit && ( <input disabled placeholder={webKey}></input>)}
-        <label>SDK Endpoint</label>
-        {edit && ( <input id="sdk" value={sdkEndpoint} onChange={(e) => setSDKEndpoint(e.target.value)} required></input>)}
-        {!edit && ( <input disabled placeholder={sdkEndpoint}></input>)}
-        <label>API Key</label>
-        {edit && ( <input id="api" value={apiKey} onChange={(e) => setAPIKey(e.target.value)} required></input>)}
-        {!edit && ( <input disabled placeholder={apiKey}></input>)}
-        {!edit && ( <button onClick={() => setEdit(!edit)}>Change Connection</button>)}
-        {edit && ( <button onClick={submitData}>Save Connection</button>)}
-        {edit && ( <button onClick={cancelChange}>Cancel</button>)}
+        <h4>Braze Account Setup</h4>
+        <Form.Label>Web App API Key</Form.Label>
+        {edit && ( <Form.Control id="webApp" value={webKey} onChange={(e) => setWebKey(e.target.value)} required></Form.Control>)}
+        {/* {edit && ( <input id="webApp" value={webKey} onChange={(e) => setWebKey(e.target.value)} required></input>)} */}
+        {!edit && ( <Form.Control disabled placeholder={webKey}></Form.Control>)}
+        {/* {!edit && ( <input disabled placeholder={webKey}></input>)} */}
+        <Form.Label>SDK Endpoint</Form.Label>
+        {edit && ( <Form.Control id="sdk" value={sdkEndpoint} onChange={(e) => setSDKEndpoint(e.target.value)} required></Form.Control>)}
+        {/* {edit && ( <input id="sdk" value={sdkEndpoint} onChange={(e) => setSDKEndpoint(e.target.value)} required></input>)} */}
+        {!edit && ( <Form.Control disabled placeholder={sdkEndpoint}></Form.Control>)}
+        {/* {!edit && ( <input disabled placeholder={sdkEndpoint}></input>)} */}
+        <Form.Label>API Key</Form.Label>
+        {edit && ( <Form.Control id="api" value={apiKey} onChange={(e) => setAPIKey(e.target.value)} required></Form.Control>)}
+        {/* {edit && ( <input id="api" value={apiKey} onChange={(e) => setAPIKey(e.target.value)} required></input>)} */}
+        {!edit && ( <Form.Control disabled placeholder={apiKey}></Form.Control>)}
+        {/* {!edit && ( <input disabled placeholder={apiKey}></input>)} */}
+        {!edit && ( <Button variant="secondary" className="mt-3" onClick={() => setEdit(!edit)}>Change Connection</Button>)}
+        {edit && ( <Button variant="primary" className="mt-3" onClick={submitData}>Save Connection</Button>)}
+        {edit && ( <Button variant="outline-danger" className="mt-3" onClick={cancelChange}>Cancel</Button>)}
         </>    
     )
 }

@@ -1,5 +1,4 @@
 import {React, useState} from 'react';
-import './App.css';
 import * as braze from '@braze/web-sdk';
 import { Routes, Route } from 'react-router-dom';
 import User from './pages/User';
@@ -8,6 +7,7 @@ import InAppMessages from './pages/InAppMessages';
 import WebPush from './pages/WebPush';
 import Home from './pages/Home';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 // NOTE: still might be superfluous to have the appLocalUser, appLocalConnection consts below
 // and also have a page CurrentConnectionData.jsx dedicated to the same thing.
@@ -40,7 +40,7 @@ function App() {
 
   // render the App
   return (
-    <div className="App">
+      <>
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
@@ -49,7 +49,8 @@ function App() {
         <Route path="/inappmessages" element={<InAppMessages/>}/>
         <Route path="/webpush" element={<WebPush/>}/>
       </Routes>
-    </div>
+      <Footer/>
+    </>
   );
 }
 
