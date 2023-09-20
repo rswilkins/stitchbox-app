@@ -7,6 +7,7 @@ import ContentCards from './pages/ContentCards';
 import InAppMessages from './pages/InAppMessages';
 import WebPush from './pages/WebPush';
 import Home from './pages/Home';
+import Navbar from './Navbar';
 
 // NOTE: still might be superfluous to have the appLocalUser, appLocalConnection consts below
 // and also have a page CurrentConnectionData.jsx dedicated to the same thing.
@@ -40,7 +41,7 @@ function App() {
   // render the App
   return (
     <div className="App">
-      {/* bring in UpdateBrazeConnection component, passing App() set state function as a prop */}
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/user" element={<User/>}/>
