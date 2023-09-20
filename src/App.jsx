@@ -3,6 +3,12 @@ import './App.css';
 import UpdateBrazeConnection from './UpdateBrazeConnection';
 import UpdateBrazeUser from './UpdateBrazeUser';
 import * as braze from '@braze/web-sdk';
+import { Routes, Route } from 'react-router-dom';
+import User from './pages/User';
+import ContentCards from './pages/ContentCards';
+import InAppMessages from './pages/InAppMessages';
+import WebPush from './pages/WebPush';
+import Home from './pages/Home';
 
 function App() {
   // INVESTIGATE!!! I may not need to use local connection as
@@ -53,6 +59,13 @@ function App() {
       <div>
       <UpdateBrazeUser updateBrazeUser={setUser}/>
       </div>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/user" element={<User/>}/>
+        <Route path="/contentcards" element={<ContentCards/>}/>
+        <Route path="/inappmessages" element={<InAppMessages/>}/>
+        <Route path="/webpush" element={<WebPush/>}/>
+      </Routes>
     </div>
   );
 }
