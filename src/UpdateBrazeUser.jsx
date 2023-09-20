@@ -4,8 +4,9 @@
 
 import { React, useState } from "react"
 import { CurrentUserData } from "./CurrentConnectionData"
+import * as braze from '@braze/web-sdk'
 
-export default function UpdateBrazeUser({updateBrazeUser}) {
+export default function UpdateBrazeUser() {
     // state variable controlling editability of all input fields
     const [edit, setEdit] = useState(false)
     
@@ -20,10 +21,12 @@ export default function UpdateBrazeUser({updateBrazeUser}) {
     function submitData() {
         // save new data to local storage
         localStorage.setItem("stitchboxBrazeUser", JSON.stringify(externalId))
+        // designate this user as the one to be tracked by Braze as well as ends the current session
+        braze.changeUser(externalId)
         // toggle edit off
         setEdit(!edit)
-        // update App() state to rerender App()
-        updateBrazeUser(externalId)
+        // refresh the browser to pull in the latest info
+        window.location.reload()
     }
 
     function cancelChange() {

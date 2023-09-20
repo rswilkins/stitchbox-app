@@ -4,7 +4,7 @@
 import { React, useState } from "react"
 import { CurrentConnectionData } from "./CurrentConnectionData"
 
-export default function UpdateBrazeConnection({updateBrazeConnection}) {
+export default function UpdateBrazeConnection() {
     // state variable controlling editability of all input fields
     const [edit, setEdit] = useState(false)
     
@@ -34,12 +34,6 @@ export default function UpdateBrazeConnection({updateBrazeConnection}) {
         }))
         // toggle edit off
         setEdit(!edit)
-        // update App() state to rerender App()
-        updateBrazeConnection({
-            webAppAPIKey: webKey,
-            sdkEndpoint: sdkEndpoint,
-            restAPIKey: apiKey
-        })
         //refresh the page to make sure Braze initialization gets the latest data
         window.location.reload()
     }

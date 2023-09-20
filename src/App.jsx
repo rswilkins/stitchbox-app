@@ -1,7 +1,5 @@
 import {React, useState} from 'react';
 import './App.css';
-import UpdateBrazeConnection from './UpdateBrazeConnection';
-import UpdateBrazeUser from './UpdateBrazeUser';
 import * as braze from '@braze/web-sdk';
 import { Routes, Route } from 'react-router-dom';
 import User from './pages/User';
@@ -10,35 +8,18 @@ import InAppMessages from './pages/InAppMessages';
 import WebPush from './pages/WebPush';
 import Home from './pages/Home';
 
+// NOTE: still might be superfluous to have the appLocalUser, appLocalConnection consts below
+// and also have a page CurrentConnectionData.jsx dedicated to the same thing.
+// pick one or the other - I will probably need to make a const per page to make sure that resetting
+// the connection data or the user data always pulls in the latest directly from the browser
+
 function App() {
-  // INVESTIGATE!!! I may not need to use local connection as
-  // state for the App - the only purpose is to get the app to refresh
-  // once the connection has been updated, but braze.initialize
-  // requires a page refresh regardless
-  // so I may just be able to remove this as a state for the app entirely
-  
   // get latest values from browser storage
   // could I pass these as props to other components?
   const appLocalUser = localStorage.getItem("stitchboxBrazeUser")
   const appLocalConnection = localStorage.getItem("stitchboxBrazeConnection")
   // entire app dependent on Braze connection details - if these change, the whole app must rerender
   // other components save Braze connection details in local browser; initial App state uses these details if present ('' if not)
-  const [connection, setConnection] = useState(() => {
-      if (appLocalConnection == null) return {
-        webAppAPIKey: '',
-        sdkEndpoint: '',
-        restAPIKey: ''
-      }
-      return {
-        webAppAPIKey: JSON.parse(appLocalConnection).webApp,
-        sdkEndpoint: JSON.parse(appLocalConnection).sdk,
-        restAPIKey: JSON.parse(appLocalConnection).api
-    }})
-
-  const [user, setUser] = useState(() => {
-    if (appLocalUser == null) return ''
-    return JSON.parse(appLocalUser)
-  })
 
   if (appLocalConnection != null) {
     braze.initialize(JSON.parse(appLocalConnection).webApp,{
@@ -49,16 +30,17 @@ function App() {
     console.log('No connection data - Braze not initialized')
   }
 
+  if (appLocalUser != null) {
+    braze.openSession()
+    console.log(`Tracking user ${appLocalUser}`)
+  } else {
+    console.log('No Braze user set. Enter an External Id to begin tracking.')
+  }
+
   // render the App
   return (
     <div className="App">
       {/* bring in UpdateBrazeConnection component, passing App() set state function as a prop */}
-      <div>
-      <UpdateBrazeConnection updateBrazeConnection={setConnection}/>
-      </div>
-      <div>
-      <UpdateBrazeUser updateBrazeUser={setUser}/>
-      </div>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/user" element={<User/>}/>
