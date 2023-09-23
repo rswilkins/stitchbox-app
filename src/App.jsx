@@ -27,6 +27,7 @@ function App() {
       baseUrl: JSON.parse(appLocalConnection).sdk,
       enableLogging: true
     })
+    braze.automaticallyShowInAppMessages()
   } else {
     console.log('No connection data - Braze not initialized')
   }
