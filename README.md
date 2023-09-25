@@ -1,18 +1,30 @@
+# Welcome to Stitchbox!
+
+Stitchbox is a super simple web app with a working Braze Web SDK integration. Simply enter your Braze Workspace account details, a user external Id to track, and you're good to go.
+
+Note: I am not a professional developer - you're likely to find bugs in this app, and the validation & error handling functionality leave much to be desired. BUT...assuming you have access to a Braze workspace, you can send yourself In-App Messages, Web Push Notifications, and Content Cards, as well as log Custom Events and Purchases for the tracked user.
+
+Enjoy!
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## How To Run Locally
 
-In the project directory, you can run:
+Once you've cloned the repo, run:
+
+### `npm install`
+
+Then run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+And then open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Other Available Scripts
+
+In the project directory, you can run:
 
 ### `npm test`
 
