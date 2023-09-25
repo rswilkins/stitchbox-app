@@ -16,8 +16,9 @@ export default function ContentCards() {
     }
 
     return (
-        <Container>
-        <h1>Content Cards</h1>
+        <Container className="jumbotron">
+        <h1 className="display-3 mt-4">Content Cards</h1>
+        <p className="lead">View cards in both a custom feed and the standard feed</p>
         <Row>
             <Col>
                 <h4>Custom Feed</h4>

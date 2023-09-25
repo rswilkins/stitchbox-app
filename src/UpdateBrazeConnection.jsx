@@ -59,7 +59,7 @@ export default function UpdateBrazeConnection() {
     // returns different inputs & buttons based on edit state of the component
     return (
         <>
-        <h4>Braze Account Setup</h4>
+        <h4>Braze Workspace Setup</h4>
         <Form.Label>Web App API Key</Form.Label>
         {edit && ( <Form.Control id="webApp" value={webKey} onChange={(e) => setWebKey(e.target.value)} required></Form.Control>)}
         {/* {edit && ( <input id="webApp" value={webKey} onChange={(e) => setWebKey(e.target.value)} required></input>)} */}
@@ -75,9 +75,9 @@ export default function UpdateBrazeConnection() {
         {/* {edit && ( <input id="api" value={apiKey} onChange={(e) => setAPIKey(e.target.value)} required></input>)} */}
         {!edit && ( <Form.Control disabled placeholder={apiKey}></Form.Control>)}
         {/* {!edit && ( <input disabled placeholder={apiKey}></input>)} */}
-        {!edit && ( <Button variant="secondary" className="mt-3" onClick={() => setEdit(!edit)}>Change Connection</Button>)}
-        {edit && ( <Button variant="primary" className="mt-3" onClick={submitData}>Save Connection</Button>)}
-        {edit && ( <Button variant="outline-danger" className="mt-3" onClick={cancelChange}>Cancel</Button>)}
+        {!edit && ( <Button variant="secondary" className="m-4" onClick={() => setEdit(!edit)}>Change Connection</Button>)}
+        {edit && ( <Button variant="primary" className="m-4" onClick={submitData}>Save Connection</Button>)}
+        {edit && ( <Button variant="outline-danger" className="m-4" onClick={cancelChange}>Cancel</Button>)}
         </>    
     )
 }

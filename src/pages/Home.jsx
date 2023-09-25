@@ -7,7 +7,7 @@ export default function Home() {
         <Container>
             <div className="jumbotron">
                 <h1 className="display-3 mt-4">Welcome to Stitchbox</h1>
-                <p className="lead">Stitchbox is a simple web app featuring fully functional Braze Web SDK and REST API integrations.</p>
+                <p className="lead">Stitchbox is a simple web app with a functional Braze Web SDK integration. Enter your Braze Workspace details and a user's External Id to get started.</p>
             </div>
             <hr></hr>
         <Row>

@@ -10,7 +10,7 @@ export default function WebPush() {
     return (
         <Container className="jumbotron">
             <h1 className="display-3 mt-4">Web Push</h1>
-            <p className="lead">Blah blah balh</p>
+            <p className="lead">{`browser support is ${braze.isPushSupported()}, permission granted is ${braze.isPushPermissionGranted()}, blocked is ${braze.isPushBlocked()}`}</p>
             {pushSupported ? <PushSupportedInBrowser/> : <PushNotSupportedInBrowser/> }
         </Container>
     )
@@ -58,7 +58,7 @@ function UserHasBlockedPush() {
 
 // component to display if user has not disabled push - dependent on if push is eligible
 function UserNotBlockedPush() {
-    const[isPushPromptEligible, setIsPushPromptEligible] = useState(braze.isPushPermissionGranted())
+    const[isPushPromptEligible, setIsPushPromptEligible] = useState(!braze.isPushPermissionGranted())
     
     
     // this logic isn't working for some reason
