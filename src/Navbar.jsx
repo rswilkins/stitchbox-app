@@ -14,6 +14,7 @@ export default function Navbar() {
                 <CustomLink to="/contentcards">Content Cards</CustomLink>
                 <CustomLink to="/inappmessages">In App Messages</CustomLink>
                 <CustomLink to="/webpush">Web Push</CustomLink>
+                <CustomLink to="/featureflags">Feature Flags</CustomLink>
             </ul>
             </div>
         </nav>

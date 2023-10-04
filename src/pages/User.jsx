@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { Container, Form, Button, Stack } from "react-bootstrap"
+import Alert from "../Alert"
 import * as braze from "@braze/web-sdk"
+import StitchboxAlert from "../Alert"
 
 export default function User() {
     const [customEvent, setCustomEvent] = useState('')
@@ -21,6 +23,7 @@ export default function User() {
     }
     
     return (
+        <>
         <Container className="jumbotron">
             <h1 className="display-3 mt-4">User Data</h1>
             <p className="lead">Log custom events and purchases for the tracked user.</p>
@@ -35,5 +38,6 @@ export default function User() {
             </Stack>
             <Button onClick={logPurchase} variant="primary mt-3">Log Purchase</Button>
         </Container>
+        </>
     )
 }

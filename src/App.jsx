@@ -8,6 +8,7 @@ import WebPush from './pages/WebPush';
 import Home from './pages/Home';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import FeatureFlags from './pages/FeatureFlags';
 
 // NOTE: still might be superfluous to have the appLocalUser, appLocalConnection consts below
 // and also have a page CurrentConnectionData.jsx dedicated to the same thing.
@@ -49,6 +50,7 @@ function App() {
         <Route path="/contentcards" element={<ContentCards/>}/>
         <Route path="/inappmessages" element={<InAppMessages/>}/>
         <Route path="/webpush" element={<WebPush/>}/>
+        <Route path="/featureflags" element={<FeatureFlags/>}/>
       </Routes>
       <Footer/>
     </>
